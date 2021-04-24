@@ -3,6 +3,8 @@ import Homepage from './Pages/Homepage/Homepage.js'
 import {Switch,Route} from 'react-router-dom';
 import MenuPage from './Pages/MenuPage/MenuPage.js'
 import Header from './Components/Header/Header.js'
+import SignInAndSignUp from './Pages/Signin&SignUp/Signin&Signup.js'
+
 
 const DosaVarietyPage=()=> {
 	return (
@@ -20,6 +22,7 @@ function App() {
 		    <Route exact path='/' component={Homepage}/>
 		    <Route path='/dosa' component={DosaVarietyPage}/>
 		    <Route path='/menu' component={MenuPage}/>
+		    <Route path='/signIn' component={SignInAndSignUp}/>
 	    </Switch>
     </div>
   );
