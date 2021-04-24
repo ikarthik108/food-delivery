@@ -2,6 +2,7 @@ import './App.css';
 import Homepage from './Pages/Homepage/Homepage.js'
 import {Switch,Route} from 'react-router-dom';
 import MenuPage from './Pages/MenuPage/MenuPage.js'
+import Header from './Components/Header/Header.js'
 
 const DosaVarietyPage=()=> {
 	return (
@@ -14,6 +15,7 @@ const DosaVarietyPage=()=> {
 function App() {
   return (
     <div className="">
+    <Header/>
     	<Switch>
 		    <Route exact path='/' component={Homepage}/>
 		    <Route path='/dosa' component={DosaVarietyPage}/>
