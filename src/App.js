@@ -6,6 +6,7 @@ import MenuPage from './Pages/MenuPage/MenuPage.js'
 import Header from './Components/Header/Header.js'
 import SignInAndSignUp from './Pages/Signin&SignUp/Signin&Signup.js'
 import  {auth} from './firebase/firebase.utils.js'
+import {createUserProfileDocument} from './firebase/firebase.utils.js';
 
 
 const DosaVarietyPage=()=> {
@@ -29,9 +30,22 @@ class App extends React.Component {
 	componentDidMount(){
 		//reassigned to the return value of calling auth.onAuthStateChanged(),
 		//this method returns another method: firebase.unsubscribe().
-		this.unsubscribeFromAuth=auth.onAuthStateChanged(user=>{
-			this.setState({currentUser:user});
-			console.log(user); //this is an open Subscription(Kind of like open messaging system bw app and firebase)
+		this.unsubscribeFromAuth=auth.onAuthStateChanged( async userAuth=>{
+			if(userAuth) {
+				const userRef= await createUserProfileDocument(userAuth);
+				userRef.onSnapshot(snapShot=> {
+					this.setState({
+						currentUser:{
+							id:snapShot.id,
+							...snapShot.data()
+						}
+					})
+				});
+			}
+			else {
+				this.setState({currentUser:userAuth})
+			}
+			// console.log(user); //this is an open Subscription(Kind of like open messaging system bw app and firebase)
 		})
 	}
 
