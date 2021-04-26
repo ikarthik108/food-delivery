@@ -12,9 +12,9 @@ class MenuPage extends React.Component {
 		}
 	}
 
-	onSearchChange= (event) => {
-    this.setState({searchField:event.target.value})
-	}
+	// onSearchChange= (event) => {
+ //    this.setState({searchField:event.target.value})
+	// }
 
 	render () {
 		return (
@@ -23,7 +23,7 @@ class MenuPage extends React.Component {
 				{
 					this.state.collections.map(collection => (
 					<div>
-						<SearchBox title={collection.title} searchChange={this.onSearchChange}/>
+						{/*<SearchBox title={collection.title} searchChange={this.onSearchChange}/>*/}
 						<CollectionPreview key={collection.id} title={collection.title} 
 						routeName={collection.routeName} items={collection.items}/> 
 					</div>

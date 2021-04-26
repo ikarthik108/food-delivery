@@ -2,15 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'tachyons';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'; //Component to Wrap around our application
+import {Provider} from 'react-redux'; //Component that gives access to all of the things related to the redux store
+import store from './redux/Store/Store.js'
 
 ReactDOM.render(
-	<BrowserRouter>
-		<React.StrictMode>
-			<App />
-		</React.StrictMode>
-  </BrowserRouter>,
+		<Provider store={store}>
+		<BrowserRouter>
+			<React.StrictMode>
+				<App />
+			</React.StrictMode>
+	  	</BrowserRouter>
+	  	</Provider>,
   document.getElementById('root')
 );
 
