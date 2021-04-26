@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Homepage from './Pages/Homepage/Homepage.js'
-import {Switch,Route} from 'react-router-dom';
+import {Switch,Route,Redirect} from 'react-router-dom';
 import MenuPage from './Pages/MenuPage/MenuPage.js'
 import Header from './Components/Header/Header.js'
 import SignInAndSignUp from './Pages/Signin&SignUp/Signin&Signup.js'
@@ -59,15 +59,19 @@ class App extends React.Component {
 				    <Route exact path='/' component={Homepage}/>
 				    <Route path='/dosa' component={DosaVarietyPage}/>
 				    <Route path='/menu' component={MenuPage}/>
-				    <Route path='/signIn' component={SignInAndSignUp}/>
+				    <Route exact path='/signIn' render={()=>this.props.currentUser?(<Redirect to='/'/>) : (<SignInAndSignUp/>)}/>
 			    </Switch>
 		    </div>
   		);
 	} 
 }
 
+const mapStateToProps=state=> ({
+	currentUser:state.user.currentUser
+})
+
 const mapDispatchToProps=dispatch=> ({
 	setCurrentUser: user=> dispatch(setCurrentUser(user))
 });
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
