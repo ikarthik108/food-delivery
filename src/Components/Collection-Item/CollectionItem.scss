@@ -22,6 +22,20 @@
     justify-content: center;
     display:none;
   }
+
+  .item-description{
+    width:75%;
+    opacity:0.7;
+    top:10%;
+    display:none;
+    justify-content: center;
+    position:absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color:auto;
+
+  }
+
   &:hover {
     .image {
       opacity:0.8;
@@ -29,8 +43,11 @@
 
     .custom-button{
       opacity: 0.85;
+      display:flex; 
+    }
+    .item-description {
+      opacity:1;
       display:flex;
-      
     }
   };
 

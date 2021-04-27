@@ -75,7 +75,8 @@ const MENU_DATA = [
         id: 11,
         name: 'Kanchipuram Idli',
         imageUrl: 'https://i.pinimg.com/originals/b3/fc/be/b3fcbedf1e557914c9b97c85c5b09216.jpg',
-        price: 280
+        price: 280,
+        description:"Popular Indian bowl-shaped pancake made from a batter of rice flour and coconut milk served with fresh Coconut Chutney."
       },
       {
         id: 12,

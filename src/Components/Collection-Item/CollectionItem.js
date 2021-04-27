@@ -10,6 +10,10 @@ const CollectionItem=({id,item,addItem})=> {
 	return (
 		<div className='collection-item'>
 			<div className='image' style={{backgroundImage:`url(${item.imageUrl})`}}/>
+			{ item.description ?
+			 <div className='item-description'>{item.description}</div>
+			 :null
+			}
 			<div className='collection-footer'>
 				<span className='name'>{item.name}</span>
 				<span className='price'>{item.price}</span>
