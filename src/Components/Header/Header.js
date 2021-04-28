@@ -6,6 +6,10 @@ import {auth} from '../../firebase/firebase.utils.js'
 import { connect } from 'react-redux';
 import CartIcon from '../CartIcon/CartIcon.js'
 import CartDropdown from '../Cart-Dropdown/Cart-Dropdown.js'
+import {selectCurrentUser} from '../../redux/User/user.selectors.js';
+import {selectCartHidden} from '../../redux/cart/cart.selectors.js';
+
+import {createStructuredSelector} from 'reselect';// using this there is no need to pass state to every selector in mapStateToProps
 
 
 const Header=({currentUser,hidden}) => {
@@ -30,9 +34,9 @@ const Header=({currentUser,hidden}) => {
 		)
 }
 
-const mapStateToProps=(state) => ({
-	currentUser:state.user.currentUser,
-	hidden:state.cart.hidden
+const mapStateToProps =createStructuredSelector ({
+	currentUser:selectCurrentUser,
+	hidden:selectCartHidden
 })
 
 export default connect(mapStateToProps)(Header);
