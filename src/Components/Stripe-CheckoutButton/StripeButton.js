@@ -16,7 +16,7 @@ const StripeCheckoutButton=({price})=> {
 		shippingAddress
 		image=""
 		currency='INR'
-		description={`Your Total Price is ${priceForStripe}Rs`}
+		description={`Your Total Price is ${price}Rs`}
 		amount={priceForStripe}
 		panelLabel='Pay Now'
 		stripeKey={publishableKey}
