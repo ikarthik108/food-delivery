@@ -4,9 +4,12 @@ import Directory from '../../Components/Directory/Directory.js'
 
 const Homepage=()=> {
 	return (
-		<div className='homepage'>
-			<Directory/>
+		<div className='homepage' >
+			<div className='homepage-components'>
+				<Directory/>
+			</div>
 		</div>
+		
 		)
 }
 

@@ -9,7 +9,7 @@ const MENU_DATA = {
         name: 'Plain Dosa',
         imageUrl: 'https://img-global.cpcdn.com/recipes/ff3b6e216d3d2150/1200x630cq70/photo.jpg',
         price: 25,
-        description:" "
+        description:"Thin pancake originating from South India, made from a fermented batter predominantly consisting of lentils and rice."
       },
       {
         id: 2,
@@ -86,7 +86,7 @@ const MENU_DATA = {
         name: 'Kanchipuram Idli',
         imageUrl: 'https://i.pinimg.com/originals/b3/fc/be/b3fcbedf1e557914c9b97c85c5b09216.jpg',
         price: 280,
-        description:"Popular Indian bowl-shaped pancake made from a batter of rice flour and coconut milk served with fresh Coconut Chutney."
+        description:"Idlis spiced with cumin, pepper and ginger powder steamed in a bamboo basket which is lined with the leaves of the bauhinia plant."
       },
       {
         id: 12,
@@ -142,7 +142,7 @@ const MENU_DATA = {
         name: 'Medu Vada',
         imageUrl: 'https://www.archanaskitchen.com/images/archanaskitchen/Indian_Breakfast_Tiffins/South_Indian_Medu_Vada_Sambar_with_Medu_Vada_Maker-8.jpg',
         price: 125,
-        description:" "
+        description:"Doughnut shaped fritters made with black gram, herbs, coconut and spices."
       },
       {
         id: 19,
@@ -184,7 +184,9 @@ const MENU_DATA = {
         name: 'Rava Upma',
         imageUrl: 'https://i1.wp.com/kalimirchbysmita.com/wp-content/uploads/2015/04/Vegetable_Upma-1438-11-1024x715-1024x715.jpg',
         price: 25,
-        description:" "
+        description:`Flavorful South Indian breakfast dish made from rava(Cream of wheat).
+                    It involves cooking roasted rava in water that has been flavored by ghee (or oil), cashews, urad dal (lentils), 
+                    chana dal (husked chickpeas), onion, ginger and additional herbs and spices.`
       },
       {
         id: 24,
@@ -240,7 +242,7 @@ const MENU_DATA = {
         name: 'Paal Payasam',
         imageUrl: 'https://www.archanaskitchen.com/images/archanaskitchen/Indian_Sweets_Mithai/Paal_Payasam_Recipe_Rice_Kheer-1_400.jpg',
         price: 325,
-        description:" "
+        description:`A sweet end to a perfect meal. A delicious rice and milk pudding with cashews and raisins.`
       },
       {
         id: 31,
@@ -274,7 +276,7 @@ const MENU_DATA = {
         name: 'Sweet Pongal',
         imageUrl: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2018/08/sweet-pongal-recipe.jpg',
         price: 25,
-        description:" "
+        description:`Sweet rice dish cooked in a clay pot over an open fire with rice, Mung Bean, Sugar, Cashews.`
       }
     ]
   }
