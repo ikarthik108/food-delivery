@@ -1,37 +1,17 @@
 import React from 'react';
-import MENU_DATA from './MenuData.js'
-import CollectionPreview from '../../Components/Collection-Preview/CollectionPreview.js'
 import SearchBox from '../../Components/SearchBox/SearchBox.js'
+import CollectionOverview from '../../Components/Collection-Overview/CollectionOverview.js'
+import CollectionPage from '../Collection/Collection.js'
 
-class MenuPage extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state={
-			collections:MENU_DATA,
-			searchField:''
-		}
-	}
+import {Route} from 'react-router-dom';
 
-	// onSearchChange= (event) => {
- //    this.setState({searchField:event.target.value})
-	// }
-
-	render () {
+const MenuPage=({match})=>{
 		return (
-			<div>
-			
-				{
-					this.state.collections.map(collection => (
-					<div>
-						{/*<SearchBox title={collection.title} searchChange={this.onSearchChange}/>*/}
-						<CollectionPreview key={collection.id} title={collection.title} 
-						routeName={collection.routeName} items={collection.items}/> 
-					</div>
-					))
-				}
+			<div className='menu-page'>
+				<Route exact path={`${match.path}`} component={CollectionOverview}/>
+				<Route path={`${match.path}/:collectionId`} component={CollectionPage}/>
 			</div>
 			)
-	}
 }
 
 export default MenuPage;

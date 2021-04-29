@@ -1,5 +1,5 @@
-const MENU_DATA = [
-  {
+const MENU_DATA = {
+  dosa:{
     id: 1,
     title: 'Dosa Varieties',
     routeName: 'dosa',
@@ -60,7 +60,7 @@ const MENU_DATA = [
       }
     ]
   },
-  {
+  idli:{
     id: 2,
     title: 'Idli Varieties',
     routeName: 'idli',
@@ -116,7 +116,7 @@ const MENU_DATA = [
       }
     ]
   },
-  {
+  vada:{
     id: 3,
     title: 'Vada Varieties',
     routeName: 'vada',
@@ -153,7 +153,7 @@ const MENU_DATA = [
       }
     ]
   },
-  {
+  upma:{
     id: 4,
     title: 'Upma Varieties',
     routeName: 'upma',
@@ -202,7 +202,7 @@ const MENU_DATA = [
       }
     ]
   },
-  {
+  sweets:{
     id: 5,
     title: 'Sweet Items',
     routeName: 'sweets',
@@ -245,6 +245,6 @@ const MENU_DATA = [
       }
     ]
   }
-];
+}
 
 export default MENU_DATA;

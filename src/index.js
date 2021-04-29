@@ -6,13 +6,17 @@ import 'tachyons';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'; //Component to Wrap around our application
 import {Provider} from 'react-redux'; //Component that gives access to all of the things related to the redux store
-import store from './redux/Store/Store.js'
+import {store,persistor} from './redux/Store/Store.js'
+
+import {PersistGate} from 'redux-persist/integration/react';
 
 ReactDOM.render(
 		<Provider store={store}>
 		<BrowserRouter>
 			<React.StrictMode>
-				<App />
+				<PersistGate persistor={persistor}>
+					<App />
+				</PersistGate>
 			</React.StrictMode>
 	  	</BrowserRouter>
 	  	</Provider>,

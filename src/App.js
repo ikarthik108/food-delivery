@@ -17,14 +17,6 @@ import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
 
 
-const DosaVarietyPage=()=> {
-	return (
-		<div>
-			<h1>You are on the Dosa Varieties Page</h1>
-		</div>
-		)
-}
-
 class App extends React.Component {
 	unsubscribeFromAuth=null // initialised as null
 
@@ -62,7 +54,6 @@ class App extends React.Component {
 		    <Header/>
 		    	<Switch>
 				    <Route exact path='/' component={Homepage}/>
-				    <Route path='/dosa' component={DosaVarietyPage}/>
 				    <Route path='/menu' component={MenuPage}/>
 				    <Route exact path='/signIn' render={()=>this.props.currentUser?(<Redirect to='/'/>) : (<SignInAndSignUp/>)}/>
 				    <Route exact path='/checkout' component={CheckoutPage}/>
