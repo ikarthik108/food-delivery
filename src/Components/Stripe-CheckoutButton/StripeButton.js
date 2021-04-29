@@ -2,14 +2,28 @@ import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import {clearCart} from '../../redux/cart/cart.actions.js'
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 
-const StripeCheckoutButton=({price,clearCart})=> {
+
+// function myFunction() {
+//   myVar = setTimeout(history.push(`/`), 3000);
+// }
+
+// function alertFunc() {
+//   alert("Hello!");
+// }
+
+const StripeCheckoutButton=({price,clearCart,history})=> {
 	const onToken=token=> {
 		console.log(token)
 		clearCart();
-		alert("Payment Successful");
+		// setTimeout(history.push(`/`), 5000);
+		alert("Payment Successful,Your Order Has Been Placed.")
+		
+
 	}
+		
 	const priceForStripe=price*100;
 	const publishableKey='pk_test_51IlWDdSEh9YmlXJPq0RzQQSspaYtW2nWaPLk0LMOL8xhgXXM0OhY8KHBbk9CaFg84c2wJt3nWUKD0aHLQM9TkXQQ00B326kmyJ';
 	return (
@@ -28,4 +42,4 @@ const mapDispatchToProps=dispatch=> ({
 	clearCart:()=>dispatch(clearCart())
 })
 
-export default connect(null,mapDispatchToProps)(StripeCheckoutButton);
+export default withRouter(connect(null,mapDispatchToProps)(StripeCheckoutButton));

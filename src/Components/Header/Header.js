@@ -20,7 +20,7 @@ const Header=({currentUser,hidden,clearCart}) => {
 				<Logo className='logo' height="60px" width="60px"/>
 				{/*<div class="hide">I am shown when someone hovers over the div above.</div>*/}
 			</Link>
-			<div className='app-name'><h1>FoodiZone</h1></div>
+			<div className='app-name'><h1>FoodZone</h1></div>
 			<div className='options'>
 				<Link className='option' to='/menu'>MENU</Link>
 				<Link className='option' to='/menu'>CONTACT</Link>

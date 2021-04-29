@@ -38,7 +38,9 @@ const CheckoutPage=({cartItems,total,clearCart})=> {
 				{cartItems.map(cartItem=> (
 					<CheckoutItem key={cartItem.id} cartItem={cartItem}/>))}
 			<div className='total'><span>TOTAL: &#8377;{total}</span></div>
-			<StripeCheckoutButton price={total}/>
+			{total?
+			 <StripeCheckoutButton price={total}/> :<h3 className=''>Your Cart is Empty, Add Items to Proceed For Payment</h3>}
+			
 			{/*{token? clearCart():null}*/}
 			<div className='test-details'>
 				<span>
