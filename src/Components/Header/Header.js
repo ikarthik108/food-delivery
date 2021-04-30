@@ -19,7 +19,7 @@ const Header=({currentUser,hidden,clearCart}) => {
 	return (
 		<HeaderContainer>
 			<LogoContainer to="/">
-				<Logo className='logo' height="60px" width="60px"/>
+				<Logo className='logo' height="50px" width="50px"/>
 				{/*<div class="hide">I am shown when someone hovers over the div above.</div>*/}
 			</LogoContainer>
 			{/*<div className='app-name'><h1>FoodZone</h1></div>*/}
