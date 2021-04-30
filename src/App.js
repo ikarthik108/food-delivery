@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import Homepage from './Pages/Homepage/Homepage.js'
 import MenuPage from './Pages/MenuPage/MenuPage.js'
 import SignInAndSignUp from './Pages/Signin&SignUp/Signin&Signup.js'
@@ -12,6 +12,8 @@ import  {auth,createUserProfileDocument} from './firebase/firebase.utils.js'
 import {Switch,Route,Redirect} from 'react-router-dom';
 
 import {connect} from 'react-redux';
+
+import {GlobalStyle} from './global.styles.js'
 
 import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
@@ -50,7 +52,8 @@ class App extends React.Component {
 
 	render() {
 		return (
-		    <div className="">
+		    <div>
+		    <GlobalStyle/>
 		    <Header/>
 		    	<Switch>
 				    <Route exact path='/' component={Homepage}/>

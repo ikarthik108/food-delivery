@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.scss';
+// import './Header.scss';
 import {Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/meal2.svg';
 import {auth} from '../../firebase/firebase.utils.js'
@@ -12,28 +12,30 @@ import {clearCart} from '../../redux/cart/cart.actions.js'
 
 import {createStructuredSelector} from 'reselect';// using this there is no need to pass state to every selector in mapStateToProps
 
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionDiv, OptionLink} from './Header.styles.jsx'
+
 
 const Header=({currentUser,hidden,clearCart}) => {
 	return (
-		<div className='header'>
-			<Link className='logo-container' to="/">
+		<HeaderContainer>
+			<LogoContainer to="/">
 				<Logo className='logo' height="60px" width="60px"/>
 				{/*<div class="hide">I am shown when someone hovers over the div above.</div>*/}
-			</Link>
-			<div className='app-name'><h1>FoodZone</h1></div>
-			<div className='options'>
-				<Link className='option' to='/menu'>MENU</Link>
-				<Link className='option' to='/menu'>CONTACT</Link>
+			</LogoContainer>
+			{/*<div className='app-name'><h1>FoodZone</h1></div>*/}
+			<OptionsContainer>
+				<OptionLink to='/menu'>MENU</OptionLink>
+				<OptionLink to='/menu'>CONTACT</OptionLink>
 				{
 					currentUser ?
-					 <div className='option' onClick={()=>{ auth.signOut(); clearCart()}}>SIGN OUT</div> 
-					: <Link className='option' to='/signIn'>SIGN IN</Link> 
+					 <OptionDiv onClick={()=>{ auth.signOut(); clearCart()}}>SIGN OUT</OptionDiv> 
+					: <OptionLink to='/signIn'>SIGN IN</OptionLink> 
 				}
 				<CartIcon/>
-			</div>
+			</OptionsContainer>
 			{hidden ? null  : <CartDropdown/> }
 			
-		</div>
+		</HeaderContainer>
 		)
 }
 

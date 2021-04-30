@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 
 const CollectionPreview = ({title,items,history,match}) => {
-	console.log(history);
-	console.log(match)
+	// console.log(history);
+	// console.log(match)
 	const words=title.split(" ");
 	const route=words[0].toLowerCase()
 	return (

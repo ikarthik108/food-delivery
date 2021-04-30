@@ -5,12 +5,23 @@
   justify-content: space-between;
   margin-bottom: 25px;
 
+  @media screen and (max-width: 800px) {
+    height:60px;
+    padding:10px;
+    margin-bottom: 20px;
+  }
+
 
   .logo-container {
     height: 100%;
     width: 70px;
     padding: 25px;
     justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+    width:50px;
+    padding:0;
+    }
 
     .logo {
       animation: bounceIn 0.6s;
@@ -62,6 +73,10 @@
     margin-left: 38.5%;
     color:black;
 
+    @media screen and (max-width: 800px) {
+    font-size:15px;
+    }
+
     // margin-bottom:20px;
   }
 
@@ -72,6 +87,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 800px) {
+    width:80%;
+    }
 
     .option {
       padding: 10px 15px;

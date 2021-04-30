@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {selectCollectionsForPreview} from '../../redux/Menu/menu.selectors.js'
 
 const CollectionOverview=({collections})=> {
-
 	return (
 		<div className='collections-overview'>
 		

@@ -1,14 +1,14 @@
 import React from 'react';
-import './Homepage.scss';
+// import './Homepage.scss';
+
+import {HomePageContainer} from './Homepage.styles';
 import Directory from '../../Components/Directory/Directory.js'
 
 const Homepage=()=> {
 	return (
-		<div className='homepage' >
-			<div className='homepage-components'>
-				<Directory/>
-			</div>
-		</div>
+		<HomePageContainer>
+			<Directory/>
+		</HomePageContainer>	
 		
 		)
 }
