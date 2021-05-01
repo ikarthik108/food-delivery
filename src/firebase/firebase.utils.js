@@ -20,11 +20,9 @@ export const createUserProfileDocument=async (userAuth,additionalData)=> {
 	}
 	const userRef=firestore.doc(`users/${userAuth.uid}`);
 	const snapShot=await userRef.get();
-
 	if(!snapShot.exists) {
 		const {displayName,email}=userAuth;
 		const createdAt=new Date();
-
 		try {
 			await userRef.set({
 				displayName,
@@ -36,8 +34,22 @@ export const createUserProfileDocument=async (userAuth,additionalData)=> {
 			console.log('Error Creating User',error.message)
 		}
 	}
-
 	return userRef;
+}
+
+
+export const addCollectionAndDocuments= async (collectionKey,documentsToAdd)=> {
+	const collectionRef=firestore.collection(collectionKey);
+	console.log(collectionRef);
+	const batch = firestore.batch();
+
+	documentsToAdd.forEach(doc=> {
+		const newDocRef=collectionRef.doc() //will give a new document reference at the collection and randomly generate an ID.
+		console.log(newDocRef)
+		batch.set(newDocRef, doc)
+	});
+
+	return await batch.commit(); //will fireoff the batch reuest (returns a promise) (will resolve null value if commit succeeds)
 }
 
 // Initialize Firebase

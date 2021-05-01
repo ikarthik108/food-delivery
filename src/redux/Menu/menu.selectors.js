@@ -8,6 +8,8 @@ export const selectCollections= createSelector(
 	(menu)=>menu.collections
 )
 
+
+//This function explicity returns the same collection object but turns it into a dictionary(normalization) for improved performance
 export const selectCollectionsForPreview= createSelector(
 	[selectCollections],
 	(collections)=>Object.keys(collections).map(key=>collections[key])
