@@ -7,7 +7,7 @@ import CheckoutPage from './Pages/CheckoutPage/CheckoutPage.js'
 
 import Header from './Components/Header/Header.js'
 
-import  {auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils.js'
+import  {auth, createUserProfileDocument} from './firebase/firebase.utils.js'
 
 import {Switch,Route,Redirect} from 'react-router-dom';
 
@@ -17,14 +17,14 @@ import {GlobalStyle} from './global.styles.js'
 
 import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
-import {selectCollectionsForPreview} from './redux/Menu/menu.selectors.js'
+
 
 
 class App extends React.Component {
 	unsubscribeFromAuth=null // initialised as null
 
 	componentDidMount(){
-		const {setCurrentUser,menuCollection}=this.props;
+		const {setCurrentUser}=this.props;
 		//reassigned to the return value of calling auth.onAuthStateChanged(),
 		//this method returns another method: firebase.unsubscribe().
 		this.unsubscribeFromAuth=auth.onAuthStateChanged( async userAuth=>{
@@ -40,7 +40,7 @@ class App extends React.Component {
 			else {
 				setCurrentUser(userAuth)
 			}
-			addCollectionAndDocuments('collections',menuCollection.map(({title,items})=> ({title,items})));
+			
 			// console.log(user); //this is an open Subscription(Kind of like open messaging system bw app and firebase)
 		})
 		
@@ -71,8 +71,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps=state=> ({
-	currentUser:selectCurrentUser(state),
-	menuCollection:selectCollectionsForPreview(state)
+	currentUser:selectCurrentUser(state)
+	
 })
 
 const mapDispatchToProps=dispatch=> ({
