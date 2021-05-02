@@ -67,7 +67,10 @@ class App extends React.Component {
 				    <Route exact path='/' component={Homepage}/>
 				    <Route path='/menu' component={MenuPage}/>
 				    <Route exact path='/signIn' 
-				    render={()=>this.props.currentUser?(this.props.currentUser.cartItems.forEach(item=>addItem(item)),<Redirect to='/'/>) 
+				    render={()=>this.props.currentUser?(
+				    	this.props.currentUser.cartItems
+				    	.forEach(item=>{let counter=0;while(counter<item.quantity){addItem(item);counter++}}),
+				    	<Redirect to='/'/>) 
 				    : (<SignInAndSignUp/>)}/>
 				    <Route exact path='/checkout' component={CheckoutPage}/>
 			    </Switch>
