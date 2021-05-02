@@ -3,6 +3,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import {clearCart} from '../../redux/cart/cart.actions.js'
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {ClearCartAfterCheckout} from '../../firebase/firebase.utils.js'
 
 
 
@@ -14,10 +15,11 @@ import {withRouter} from 'react-router-dom';
 //   alert("Hello!");
 // }
 
-const StripeCheckoutButton=({price,clearCart,history})=> {
+const StripeCheckoutButton=({price,clearCart,history,currentUserId})=> {
 	const onToken=token=> {
 		console.log(token)
 		clearCart();
+		ClearCartAfterCheckout(currentUserId)
 		// setTimeout(history.push(`/`), 5000);
 		alert("Payment Successful,Your Order Has Been Placed.")
 		

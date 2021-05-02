@@ -10,6 +10,7 @@ import {Route} from 'react-router-dom';
 
 import {updateCollections} from '../../redux/Menu/menu.actions.js'
 
+
 //importing the customized HOC created
 
 import WithSpinner from '../../Components/with-spinner/with-spinner.js'
@@ -25,7 +26,7 @@ class MenuPage extends React.Component {
 
 	unsubscribeFromSnapshot=null;
 	componentDidMount() {
-		const {updateCollections}=this.props;
+		const {updateCollections,currentUser}=this.props;
 		const collectionRef=firestore.collection('collections'); //Getting collections from firestore
 		collectionRef.onSnapshot(async snapShot=> {
 			const collectionsMap=convertCollectionsSnapshotToMap(snapShot);
@@ -52,5 +53,7 @@ class MenuPage extends React.Component {
 const mapDispatchToProps=dispatch=> ({
 	updateCollections:collectionsMap=> dispatch(updateCollections(collectionsMap))
 })
+
+
 
 export default connect(null,mapDispatchToProps)(MenuPage);

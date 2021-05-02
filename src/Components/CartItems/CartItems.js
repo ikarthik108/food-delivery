@@ -1,7 +1,10 @@
 import React from 'react';
 import './CartItems.scss'
 
-const CartItem=({key,item})=> {
+import {selectCurrentUser} from '../../redux/User/user.selectors.js'
+import {connect} from 'react-redux';
+
+const CartItem=({key,item,currentUser})=> {
 	return (
 		<div className='cart-item'>
 			<img src={item.imageUrl} alt='item'/>
@@ -13,4 +16,9 @@ const CartItem=({key,item})=> {
 		)
 }
 
-export default CartItem;
+const mapStateToProps=state=> ({
+	currentUser:selectCurrentUser(state)
+	
+})
+
+export default connect(mapStateToProps)(CartItem);

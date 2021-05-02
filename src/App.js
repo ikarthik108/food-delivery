@@ -17,6 +17,7 @@ import {GlobalStyle} from './global.styles.js'
 
 import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
+import {addItem} from './redux/cart/cart.actions.js'
 
 
 
@@ -24,24 +25,25 @@ class App extends React.Component {
 	unsubscribeFromAuth=null // initialised as null
 
 	componentDidMount(){
-		const {setCurrentUser}=this.props;
+		const {setCurrentUser,currentUser}=this.props;
 		//reassigned to the return value of calling auth.onAuthStateChanged(),
 		//this method returns another method: firebase.unsubscribe().
 		this.unsubscribeFromAuth=auth.onAuthStateChanged( async userAuth=>{
 			if(userAuth) {
 				const userRef= await createUserProfileDocument(userAuth);
 				userRef.onSnapshot(snapShot=> {
+					console.log(snapShot.data())
 					setCurrentUser({
 						id:snapShot.id,
 						...snapShot.data()	
 					})
 				});
+				console.log(currentUser)
 			}
 			else {
 				setCurrentUser(userAuth)
 			}
-			
-			// console.log(user); //this is an open Subscription(Kind of like open messaging system bw app and firebase)
+			 //this is an open Subscription(Kind of like open messaging system bw app and firebase)
 		})
 		
 	}
@@ -51,10 +53,12 @@ class App extends React.Component {
 		//unsubscribeFromAuth() is called inside the componentWillUnmount, it now has the value of firebase.unsubscribe(), 
 		//which executes, closing the session.
 
-
 	}
 
 	render() {
+		// const user=this.props.currentUser;
+		// const cartItems=user.cartItems
+		const {addItem}=this.props
 		return (
 		    <div>
 		    <GlobalStyle/>
@@ -62,7 +66,9 @@ class App extends React.Component {
 		    	<Switch>
 				    <Route exact path='/' component={Homepage}/>
 				    <Route path='/menu' component={MenuPage}/>
-				    <Route exact path='/signIn' render={()=>this.props.currentUser?(<Redirect to='/'/>) : (<SignInAndSignUp/>)}/>
+				    <Route exact path='/signIn' 
+				    render={()=>this.props.currentUser?(this.props.currentUser.cartItems.forEach(item=>addItem(item)),<Redirect to='/'/>) 
+				    : (<SignInAndSignUp/>)}/>
 				    <Route exact path='/checkout' component={CheckoutPage}/>
 			    </Switch>
 		    </div>
@@ -76,8 +82,13 @@ const mapStateToProps=state=> ({
 })
 
 const mapDispatchToProps=dispatch=> ({
-	setCurrentUser: user=> dispatch(setCurrentUser(user))
+	setCurrentUser: user=> dispatch(setCurrentUser(user)),	
+	addItem:item=>dispatch(addItem(item))
+})
 
-});
+
+	
+
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

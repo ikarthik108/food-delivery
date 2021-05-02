@@ -54,9 +54,107 @@ export const addCollectionAndDocuments= async (collectionKey,documentsToAdd)=> {
 	return await batch.commit(); //will fireoff the batch reuest (returns a promise) (will resolve null value if commit succeeds)
 }
 
-// export const AddUserCartItems=async(userId,itemToAdd)=> {
-// 	const 
-// }
+export const AddUserCartItems=async(userId,itemToAdd)=> {
+	const userRef=firestore.doc(`users/${userId}`);
+	const snapShot=await userRef.get();
+	console.log('snapshot',snapShot.data())
+	
+	if(snapShot.exists) {
+		const {createdAt,displayName,email}=snapShot.data()
+		let Usercart=snapShot.data().cartItems
+		const existingCartItem=Usercart.find(
+			cartItem=> cartItem.id===itemToAdd.id
+			);
+		if(existingCartItem) {
+			Usercart= Usercart.map(cartItem=> 
+				cartItem.id===itemToAdd.id 
+				? {...cartItem, quantity: cartItem.quantity + 1}
+				:cartItem
+			)
+		}
+		else {
+			Usercart.push(
+				{...itemToAdd,
+					quantity:1
+				}
+			) 
+		}
+
+
+		try {
+			await userRef.set({
+				createdAt,displayName,email,
+				cartItems:Usercart
+			})
+		} catch (error) {
+			console.log('Error Creating User',error.message)
+		}
+	}
+	console.log(userRef);
+	console.log('snapshot',snapShot.data())
+	console.log(itemToAdd);
+}
+
+export const RemoveUserCartItems=async(userId,itemToRemove,clearItem)=> {
+	const userRef=firestore.doc(`users/${userId}`);
+	const snapShot=await userRef.get();
+	console.log('snapshot',snapShot)
+	
+	if(snapShot.exists) {
+
+	const {createdAt,displayName,email}=snapShot.data()
+	let Usercart=snapShot.data().cartItems
+	const existingCartItem=Usercart.find(
+		cartItem=> cartItem.id===itemToRemove.id
+		);
+	if (clearItem) {
+		Usercart=Usercart.filter(cartItem=>cartItem.id!==itemToRemove.id)
+	}
+	else if(existingCartItem.quantity>1) {
+		Usercart= Usercart.map(cartItem=> 
+			cartItem.id===itemToRemove.id 
+			? {...cartItem, quantity: cartItem.quantity - 1}
+			:cartItem
+		)
+	}
+	else {
+		Usercart=Usercart.filter(cartItem=>cartItem.id!==itemToRemove.id)
+	}
+
+		try {
+			await userRef.set({
+				createdAt,displayName,email,
+				cartItems:Usercart
+			})
+		} catch (error) {
+			console.log('Error Creating User',error.message)
+		}
+	}
+	
+	console.log(userRef);
+	console.log(itemToRemove);
+
+}
+
+export const ClearCartAfterCheckout=async(userId)=> {
+	const userRef=firestore.doc(`users/${userId}`);
+	const snapShot=await userRef.get();
+	console.log('snapshot',snapShot)
+	if(snapShot.exists) {
+		const {createdAt,displayName,email}=snapShot.data()
+		let Usercart=snapShot.data().cartItems
+
+		try {
+			await userRef.set({
+				createdAt,displayName,email,
+				cartItems:[]
+			})
+		} catch (error) {
+			console.log('Error Creating User',error.message)
+		}
+	}
+	
+}
 
 
 export const convertCollectionsSnapshotToMap=(collections)=> {
