@@ -23,11 +23,13 @@ export const createUserProfileDocument=async (userAuth,additionalData)=> {
 	if(!snapShot.exists) {
 		const {displayName,email}=userAuth;
 		const createdAt=new Date();
+		const cartItems=[];
 		try {
 			await userRef.set({
 				displayName,
 				email,
 				createdAt,
+				cartItems,
 				...additionalData
 			})
 		} catch (error) {
@@ -51,6 +53,31 @@ export const addCollectionAndDocuments= async (collectionKey,documentsToAdd)=> {
 
 	return await batch.commit(); //will fireoff the batch reuest (returns a promise) (will resolve null value if commit succeeds)
 }
+
+// export const AddUserCartItems=async(userId,itemToAdd)=> {
+// 	const 
+// }
+
+
+export const convertCollectionsSnapshotToMap=(collections)=> {
+	const transformedCollection=collections.docs.map(doc=> {
+		const {title,items}=doc.data();
+		const words=title.split(' ')
+		const routeName=words[0].toLowerCase()
+
+		return {
+			routeName:encodeURI(routeName),
+			id:doc.id,
+			title,
+			items
+		}
+	})
+	console.log(transformedCollection);
+	 return transformedCollection.reduce((accumulator,collection)=> {
+		accumulator[collection.routeName]=collection;
+		return accumulator
+	},	{});
+} 
 
 // Initialize Firebase
  firebase.initializeApp(config);

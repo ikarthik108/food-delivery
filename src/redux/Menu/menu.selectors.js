@@ -12,13 +12,13 @@ export const selectCollections= createSelector(
 //This function explicity returns the same collection object but turns it into a dictionary(normalization) for improved performance
 export const selectCollectionsForPreview= createSelector(
 	[selectCollections],
-	(collections)=>Object.keys(collections).map(key=>collections[key])
+	(collections)=>collections ? Object.keys(collections).map(key=>collections[key]): []
 );
 
 export const selectCollectionItem =memoize((collectionUrlParam) =>
 	createSelector(
 	[selectCollections],
-	(collections)=>collections[collectionUrlParam]
+	(collections)=>collections ? collections[collectionUrlParam]:null
 	)
 );
 
