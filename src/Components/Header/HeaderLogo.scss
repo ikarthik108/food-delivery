@@ -38,6 +38,7 @@
 
   .app-name {
     display:flex;
+
     font-family: Garamond ;
     font-size: 20px;
     align-items: center ;
@@ -48,14 +49,16 @@
     // border-left: 2px solid pink;
     // margin-top: 1vw  ;
     // margin-right: 19%;
-    margin-left: 39%;
-    color:red;
+    margin-left: 37.6%;
+    color:orange;
+
+    .icon {
+      font-size: 40px;
+    }
 
 
     @media screen and (max-width: 800px) {
-     display:none;
-
-
+        display:none;
     }
 
     // margin-bottom:20px;
