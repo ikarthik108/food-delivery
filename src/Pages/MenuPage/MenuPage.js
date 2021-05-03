@@ -21,8 +21,10 @@ const CollectionPageWithSpinner=WithSpinner(CollectionPage)
 class MenuPage extends React.Component {
 
 	state = {
-		loading:true
+		loading:true,
+		searchField:''
 	};
+
 
 	unsubscribeFromSnapshot=null;
 	componentDidMount() {
@@ -36,13 +38,20 @@ class MenuPage extends React.Component {
 
 	}
 
+	onSearchChange= (event) => {
+    this.setState({searchField:event.target.value})     
+  }
+
 	render () {
 		const {match}=this.props;
 		const {loading}=this.state
+		
 		return (
 			<div className='menu-page'>
+				<SearchBox title={'By Category'} searchChange={this.onSearchChange}/>
 				<Route exact path={`${match.path}`} 
-				render={(props)=> <CollectionOverviewWithSpinner isLoading={loading} {...props}/>}/>
+				render={(props)=> <CollectionOverviewWithSpinner isLoading={loading} 
+				search={this.state.searchField} {...props}/>}/>
 				<Route path={`${match.path}/:collectionId`} 
 				render={(props)=> <CollectionPageWithSpinner isLoading={loading} {...props}/>}/>
 			</div>
