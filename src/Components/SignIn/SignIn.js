@@ -3,8 +3,7 @@ import './SignIn.scss'
 import FormInput from '../FormInput/FormInput.js'
 import CustomButton from '../CustomButton/CustomButton.js'
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils.js'
-import {connect} from 'react-redux';
-import {clearCart} from '../../redux/cart/cart.actions.js'
+
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -23,6 +22,7 @@ class SignIn extends React.Component {
 			await auth.signInWithEmailAndPassword(email,password);
 			this.setState({email:'',password:''})
 
+
 		} catch(error) {
 			console.log(error);
 		}
@@ -34,7 +34,6 @@ class SignIn extends React.Component {
 		this.setState({[name]:value});
 	}
 	render() {
-		const {clearCart}=this.props;
 		return (
 			<div className='sign-in'>
 				<h2 className='title'>I aldready have an account</h2>
@@ -48,7 +47,7 @@ class SignIn extends React.Component {
 					value={this.state.password} handleChange={this.handleChange} required/>
 
 					<div className='buttons'>
-						<CustomButton type='submit' onClick={()=>clearCart()}>Sign In</CustomButton>
+						<CustomButton type='submit'>Sign In</CustomButton>
 						<CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign In With Google</CustomButton>
 					</div>
 				</form>
@@ -57,8 +56,6 @@ class SignIn extends React.Component {
 	}
 }
 
-const mapDispatchToProps=dispatch=> ({
-	clearCart:()=>dispatch(clearCart())
-})
 
-export default connect(null,mapDispatchToProps)(SignIn);
+
+export default SignIn;

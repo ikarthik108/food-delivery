@@ -17,7 +17,7 @@ import {GlobalStyle} from './global.styles.js'
 
 import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
-import {addItem} from './redux/cart/cart.actions.js'
+import {addItem,clearCart} from './redux/cart/cart.actions.js'
 
 
 
@@ -58,7 +58,7 @@ class App extends React.Component {
 	render() {
 		// const user=this.props.currentUser;
 		// const cartItems=user.cartItems
-		const {addItem}=this.props
+		const {addItem,clearCart}=this.props
 		return (
 		    <div>
 		    <GlobalStyle/>
@@ -68,6 +68,7 @@ class App extends React.Component {
 				    <Route path='/menu' component={MenuPage}/>
 				    <Route exact path='/signIn' 
 				    render={()=>this.props.currentUser?(
+				    	clearCart(),
 				    	this.props.currentUser.cartItems
 				    	.forEach(item=>{let counter=0;while(counter<item.quantity){addItem(item);counter++}}),
 				    	<Redirect to='/'/>) 
@@ -86,7 +87,8 @@ const mapStateToProps=state=> ({
 
 const mapDispatchToProps=dispatch=> ({
 	setCurrentUser: user=> dispatch(setCurrentUser(user)),	
-	addItem:item=>dispatch(addItem(item))
+	addItem:item=>dispatch(addItem(item)),
+	clearCart:()=>dispatch(clearCart())
 })
 
 
