@@ -10,7 +10,8 @@ class SignIn extends React.Component {
 		super(props);
 		this.state={
 			email:'alex@gmail.com',
-			password:'123456'
+			password:'123456',
+			displayName:'Alex'
 		}
 	}
 
@@ -20,7 +21,7 @@ class SignIn extends React.Component {
 		try {
 
 			await auth.signInWithEmailAndPassword(email,password);
-			this.setState({email:'',password:''})
+			this.setState({email:'',password:'',displayName:''})
 
 
 		} catch(error) {

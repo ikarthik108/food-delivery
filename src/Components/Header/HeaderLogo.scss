@@ -37,19 +37,25 @@
 
 
   .app-name {
+    display:flex;
     font-family: Garamond ;
     font-size: 20px;
-    text-align: center;
-    border-bottom: 2px solid pink;
+    align-items: center ;
+    justify-content: center;
+    padding:40px 0;
+    // border-bottom: 2px solid pink;
    // border-right: 2px solid pink;
     // border-left: 2px solid pink;
     // margin-top: 1vw  ;
     // margin-right: 19%;
-    margin-left: 38.5%;
-    color:black;
+    margin-left: 39%;
+    color:red;
+
 
     @media screen and (max-width: 800px) {
-    font-size:15px;
+     display:none;
+
+
     }
 
     // margin-bottom:20px;

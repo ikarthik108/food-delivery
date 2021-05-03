@@ -18,6 +18,8 @@ import {GlobalStyle} from './global.styles.js'
 import { setCurrentUser } from './redux/User/user.actions.js'
 import {selectCurrentUser} from './redux/User/user.selectors.js'
 import {addItem,clearCart} from './redux/cart/cart.actions.js'
+import background from './app-background.jpg'
+import customBg from './custom-bg.png'
 
 
 

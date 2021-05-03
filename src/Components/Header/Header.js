@@ -23,7 +23,7 @@ const Header=({currentUser,hidden,clearCart}) => {
 				<Logo className='logo' height="50px" width="50px"/>
 				{/*<div class="hide">I am shown when someone hovers over the div above.</div>*/}
 			</LogoContainer>
-			{/*<div className='app-name'><h1>FoodZone</h1></div>*/}
+			<div className='app-name'><h1>FoodZone</h1></div>
 			<OptionsContainer>
 				<OptionLink to='/menu'>MENU</OptionLink>
 				<OptionLink to='/menu'>CONTACT</OptionLink>
