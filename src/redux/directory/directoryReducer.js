@@ -30,7 +30,7 @@ const INITIAL_STATE={
 				    imageUrl: 'https://www.merisaheli.com/wp-content/uploads/2018/12/india-desserts-pudding-rava-kesari-685x366.jpg',
 				    size: 'large',
 				    id: 5,
-				    linkUrl:'menu/sweets'
+				    linkUrl:'menu/sweet'
 				  }
 			]
 }
