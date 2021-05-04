@@ -26,7 +26,7 @@ const Header=({currentUser,hidden,clearCart}) => {
 			<div className='app-name'><h1 className='title'>FoodZone</h1> <span className='icon'>&#127858;</span></div>
 			<OptionsContainer>
 				<OptionLink to='/menu'>MENU</OptionLink>
-				<OptionLink to='/menu'>CONTACT</OptionLink>
+				<OptionLink to='/contact'>CONTACT</OptionLink>
 				{
 					currentUser ?
 					 <OptionDiv onClick={()=>{ auth.signOut(); clearCart()}}>SIGN OUT</OptionDiv> 

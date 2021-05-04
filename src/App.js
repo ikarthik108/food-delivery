@@ -4,6 +4,7 @@ import Homepage from './Pages/Homepage/Homepage.js'
 import MenuPage from './Pages/MenuPage/MenuPage.js'
 import SignInAndSignUp from './Pages/Signin&SignUp/Signin&Signup.js'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage.js'
+import ContactPage from './Pages/ContactPage/ContactPage.js'
 
 import Header from './Components/Header/Header.js'
 
@@ -68,6 +69,7 @@ class App extends React.Component {
 		    	<Switch>
 				    <Route exact path='/' component={Homepage}/>
 				    <Route path='/menu' component={MenuPage}/>
+				    <Route path='/contact' component={ContactPage}/>
 				    <Route exact path='/signIn' 
 				    render={()=>this.props.currentUser?(
 				    	clearCart(),
