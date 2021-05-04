@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components';
 
-import {image} from './app-background.jpg'
+import {image} from './assets/app-background.jpg'
 
 export const GlobalStyle=createGlobalStyle`
 	body {

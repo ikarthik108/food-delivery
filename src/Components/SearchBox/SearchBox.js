@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBox.css'
 
 const SearchBox = ({title,searchChange}) => {
 	// const titleWords=title.split(" ")
@@ -7,8 +8,9 @@ const SearchBox = ({title,searchChange}) => {
 		<div className='search-box'>
 			<input 
 			className=' tl pa3 ba b--green bg-lightest-blue' 
-			type='search' 
-			placeholder={`Search ${newtitle}`}
+			type='search'
+			title={title} 
+			placeholder={`Search the ${newtitle}...`}
 			onChange={searchChange}
 			/>
 		</div>

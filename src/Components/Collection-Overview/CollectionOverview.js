@@ -4,17 +4,33 @@ import './CollectionOverview.scss'
 import {connect} from 'react-redux';
 import {selectCollectionsForPreview} from '../../redux/Menu/menu.selectors.js'
 
-const CollectionOverview=({collections ,search})=> {
+const CollectionOverview=({collections,CategorySearch,IngredientSearch})=> {
 	console.log(collections);
-	console.log('searchField=',search?search:' Empty')
-	const filteredCollections=collections.filter(collection=> {return collection.title.toLowerCase().includes(search.toLowerCase())})
-	console.log(filteredCollections);
-	// const filteredItems= this.state.items.filter(item => {
- //      	return item.name.toLowerCase().includes(search.toLowerCase())
- //   		});
+	console.log('searchField=',CategorySearch?CategorySearch:' Empty')
+	const filteredCollections=collections.filter(collection=> {return collection.title.toLowerCase().includes(CategorySearch.toLowerCase())})
+	console.log('categoryfiltering',filteredCollections);
+
+	const filteredItems=collections.map(collection=> (
+		{
+			title:collection.title,
+			id:collection.id,
+			routeName:collection.routeName,
+			items:collection.items.filter(item=>{return item.name.toLowerCase().includes(IngredientSearch.toLowerCase())})
+		}
+	))
+	console.log('filteredItems=',filteredItems);
+
+	const final=filteredItems.filter(item => item.items.length > 0 );
+	console.log(final)
+
+	// const filteredItems=collections.map((collection)=> (
+	// 	collection.items.filter(item=> {return item.name.toLowerCase().includes(IngredientSearch.toLowerCase())})))
+	// console.log('filteredItems',filteredItems)
+	// const newFiltered=filteredItems.filter(item=> item.length!==0)
+	// console.log('final',newFiltered);
 	return (
 		<div className='collections-overview'>
-		{filteredCollections.map(collection => (
+		{final.map(collection => (
 				<CollectionPreview key={collection.id} title={collection.title} 
 				routeName={collection.routeName} items={collection.items}/> 
 					))

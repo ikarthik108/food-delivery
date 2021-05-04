@@ -22,7 +22,8 @@ class MenuPage extends React.Component {
 
 	state = {
 		loading:true,
-		searchField:''
+		CategorySearchField:'',
+		IngredientSearchField:''
 	};
 
 
@@ -39,21 +40,28 @@ class MenuPage extends React.Component {
 	}
 
 	onSearchChange= (event) => {
-    this.setState({searchField:event.target.value})     
+	console.log('TITLE',event.target.title);
+	if(event.target.title==='Category') {
+		this.setState({CategorySearchField:event.target.value})
+	} else {
+		this.setState({IngredientSearchField:event.target.value})
+	}
+         
   }
 
 	render () {
 		const {match}=this.props;
-		const {loading}=this.state
+		const {loading}=this.state;
 		
 		return (
 			<div className='menu-page'>
-				<SearchBox title={'By Category'} searchChange={this.onSearchChange}/>
+				{/*<SearchBox title={'Category'} searchChange={this.onSearchChange}/>*/}
+				<SearchBox title={'Menu'} searchChange={this.onSearchChange}/>
 				<Route exact path={`${match.path}`} 
 				render={(props)=> <CollectionOverviewWithSpinner isLoading={loading} 
-				search={this.state.searchField} {...props}/>}/>
+				CategorySearch={this.state.CategorySearchField} IngredientSearch={this.state.IngredientSearchField} {...props}/>}/>
 				<Route path={`${match.path}/:collectionId`} 
-				render={(props)=> <CollectionPageWithSpinner isLoading={loading} {...props}/>}/>
+				render={(props)=> <CollectionPageWithSpinner isLoading={loading} IngredientSearch={this.state.IngredientSearchField} {...props}/>}/>
 			</div>
 			)
 	}

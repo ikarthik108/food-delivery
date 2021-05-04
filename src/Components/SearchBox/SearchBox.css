@@ -1,3 +1,7 @@
 .search-box {
-	padding:2px;
+	padding:5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: content-box;
 }
